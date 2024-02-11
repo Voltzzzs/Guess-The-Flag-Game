@@ -1,0 +1,78 @@
+/*pag1*/
+.title {
+    position: absolute;
+    left: 40%;
+    
+}
+
+.pag1 {
+    position: absolute;
+    display: grid;
+    user-select: none;
+    grid-template-columns: 33px 33px 33px;
+    gap: 100px;
+    left: 35%;
+    top: 35%;
+  
+}
+
+.mode {
+    display: flex;
+    background-color: rgb(27, 163, 27);
+    border-radius: 15%;
+    box-shadow: 5px 5px 0px 0px rgb(107, 100, 100);
+    user-select: none;
+    padding: 150%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mode:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+.mode:active {
+    transform: scale(1.2);
+    
+}
+
+.flag {
+    display: none;
+}
+/*pag1*/
+
+/*reps*/
+.repgrid {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    row-gap:4%;
+    column-gap: 1000%;
+    left: 40%;
+    top: 50%;
+    align-items: center;
+    justify-items: center;
+
+}
+
+.rep {
+    display: flex;
+    background-color: aqua;
+    border-radius: 30%;
+    padding: 500%;
+    user-select: none;
+    box-shadow: 5px 5px 0px 0px rgb(107, 100, 100);
+}
+
+.rep:hover{
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+.rep:active{
+    transform: scale(1.2);
+}
+/*reps*/
