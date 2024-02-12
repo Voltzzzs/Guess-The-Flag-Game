@@ -1,8 +1,25 @@
 /*pag1*/
+
+body {
+    background-color: rgb(179, 137, 135);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+
 .title {
     position: absolute;
-    left: 40%;
-    
+    left: 520px;
+    top: 5px;
+}
+
+.cabecaco {
+    background-color: rgb(211, 158, 155);
+    margin-top: -25px;
+    margin-left: -25px;
+    margin-right: -25px;
+    width: 100%vh;
+    height: 100px;
 }
 
 .pag1 {
@@ -38,9 +55,7 @@
     
 }
 
-.flag {
-    display: none;
-}
+
 /*pag1*/
 
 /*reps*/
@@ -49,10 +64,10 @@
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
-    row-gap:4%;
-    column-gap: 1000%;
-    left: 40%;
-    top: 50%;
+    row-gap:10px;
+    column-gap: 50px;
+    left: 34%;
+    top: 41%;
     align-items: center;
     justify-items: center;
 
@@ -60,11 +75,16 @@
 
 .rep {
     display: flex;
-    background-color: aqua;
-    border-radius: 30%;
-    padding: 500%;
+    background-color: rgb(44, 219, 205);
+    border-radius: 30px;
+    padding: 75px;
     user-select: none;
     box-shadow: 5px 5px 0px 0px rgb(107, 100, 100);
+    overflow: hidden;
+    height: 20px;
+    width: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .rep:hover{
@@ -73,6 +93,31 @@
 }
 
 .rep:active{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 /*reps*/
+
+
+/*flags*/
+.bandivs {
+    position: absolute;
+    left: 40%;
+    top: 5%;
+  
+}
+
+.flag {
+    width: 270px;
+    height: 204px;
+    box-shadow: 5px 5px 0px 0px rgb(107, 100, 100);
+}
+/*flags*/
+
+.placar {
+    display: grid;
+    position: absolute;
+    left: -300px;
+    grid-template-columns: 50% 50%;
+    column-gap: 20px;
+
+}
