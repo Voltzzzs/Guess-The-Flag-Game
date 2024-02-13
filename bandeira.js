@@ -31,6 +31,9 @@ function ShowFlag(element){
    flaggers[element].style.display = "flex"
 }
 
+function HideFlag(element){
+    flaggers[element].style.display = "none"
+}
 
 
 
@@ -88,8 +91,13 @@ function Gaming(){
 
    WrongAnswers(RandomOption, randomCARALHO)
 
+   function EventL (){
+    flaggers[randomCARALHO ].style.display = "none"
+    Gaming()
+    options[RandomOption].removeEventListener("click",EventL)
+   }
 
-
+   options[RandomOption].addEventListener("click", EventL)
 
 
 
