@@ -19,10 +19,13 @@ let flaggersstring = ["Dinamarca","UK","Brasil","Sri Lanka"]
 
 
 
-function randomF(){
+function randomNumforFlags(){
     let randomNum = Math.round(Math.random()*3)
     return randomNum;
 }
+
+
+
 
 function ShowFlag(element){
    flaggers[element].style.display = "flex"
@@ -43,13 +46,12 @@ const op3 = document.getElementById("op3")
 const op4 = document.getElementById("op4")
 const options = [op1,op2,op3,op4]
 
-function RandomOPT (){
+function RandomOptions (){
     let randompt = Math.round(Math.random()*3)
     return randompt;
 }
 
-
-
+let othersOp = []
 
 /*Opc*/
 
@@ -60,7 +62,7 @@ function RandomOPT (){
 
 
 
-
+/**/
 
 /*PaG1*/
 function blackp1() {
@@ -70,20 +72,80 @@ function blackp1() {
         element.style.display = "grid";
     });
      
-    let randomCARALHO = randomF()
-    ShowFlag(randomCARALHO)
-
-   
-    
-    let RandomOption = RandomOPT()
-
-
-    options[RandomOption].textContent = flaggersstring[randomCARALHO]
-    return randomCARALHO
 }
 
 
-easer.addEventListener("click", blackp1)
+
+
+
+
+
+function Gaming(){
+
+    let randomCARALHO = randomNumforFlags()
+    let RandomOption = RandomOptions()
+    let ArrayforFlags = []
+    let ArrayforOpt = []
+
+    ShowFlag(randomCARALHO)
+
+    options[RandomOption].textContent = flaggersstring[randomCARALHO]
+    
+    ArrayforOpt.push(RandomOption)
+
+
+    function WrongAnswers(OpcaoAleatoria) {
+        let randomNum;
+        let Options = [];
+        let Flags = [];
+    
+        Options.push(OpcaoAleatoria)
+    
+        do {
+          randomNum = Math.floor(Math.random() * 4)
+    
+          if(!Options.includes(randomNum)){
+    
+    
+    
+    
+         do {
+    
+            let randomWrongFlag = Math.floor(Math.random() * 4)
+            options[randomNum].textContent = flaggersstring[randomWrongFlag]
+            
+        } while (Flags.length < 3)
+    
+    
+    
+    
+    
+    
+             Flags.push(randomWrongFlag)
+             Options.push(randomNum)
+          }
+    
+        } while (Options.length < 3);
+    
+    }
+
+
+
+
+    
+}
+      
+
+
+
+
+
+
+
+easer.addEventListener("click", function(){
+    blackp1()
+    Gaming()
+})
 /*PaG1*/
 
 
@@ -93,13 +155,10 @@ easer.addEventListener("click", blackp1)
 
 /*Easy*/
 
-let HasSaw = []
-HasSaw.push(flaggers[randomCARALHO])
 
 
-options[randomCARALHO].addEventListener('click', function a (){
-   
-})
+
+
 
 
 
