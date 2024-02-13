@@ -6,27 +6,64 @@ const resp = document.getElementsByClassName("rep")
 
 /*Flags*/
 
+
+
+
+
+/*ImportBandeiras*/
 const Dinamarca = document.getElementById("Dinamarca")
 const UK = document.getElementById("ReinoU")
 const BR = document.getElementById("Brasil")
 const SRI = document.getElementById("Srilanka")
+const Port = document.getElementById("Portugal")
+const Spain = document.getElementById("Spain")
+const France = document.getElementById("Frence")
+const Germany = document.getElementById("Germany")
+const Belgium = document.getElementById("Belgium")
+const Netherlands = document.getElementById("Netherlands")
+const Luxemburg = document.getElementById("Luxemburg")
+const Andorra = document.getElementById("Andorra")
+const Switzerland = document.getElementById("Switzerland")
+const Italy = document.getElementById("Italy")
+/*ImportBandeiras*/
 
 
 
 
-let flaggers = [Dinamarca,UK,BR,SRI]
-let flaggersstring = ["Dinamarca","UK","Brasil","Sri Lanka"]
+/*Array Bandeiras*/
+const flaggers = [Dinamarca,UK,BR,SRI,Port,Spain,France,Germany,
+    Belgium,Netherlands,Luxemburg,Andorra,Switzerland,Italy
+]
+
+const flaggersstring = ["Dinamarca","UK","Brasil","Sri Lanka","Portugal","Espanha","França",
+"Alemanha","Bélgica","Paises Baixos","Luxemburgo","Andorra","Suiça","Itália"
+]
+/*Array Bandeiras*/
 
 
+
+
+
+/*Random Numbers Flags/Op*/
 
 function randomNumforFlags(){
-    let randomNum = Math.round(Math.random()*3)
+    let randomNum = Math.round(Math.random()*12)
     return randomNum;
 }
 
+function RandomOptions (){
+    let randompt = Math.round(Math.random()*3)
+    return randompt;
+}
+
+
+/*Random Numbers Flags/Op*/
 
 
 
+
+
+/*Mostar e Ocultar Bandeiras*/
 function ShowFlag(element){
    flaggers[element].style.display = "flex"
 }
@@ -34,6 +71,8 @@ function ShowFlag(element){
 function HideFlag(element){
     flaggers[element].style.display = "none"
 }
+/*Mostrar e Ocultar Bandeiras*/
+
 
 
 
@@ -49,10 +88,6 @@ const op3 = document.getElementById("op3")
 const op4 = document.getElementById("op4")
 const options = [op1,op2,op3,op4]
 
-function RandomOptions (){
-    let randompt = Math.round(Math.random()*3)
-    return randompt;
-}
 
 
 /*Opc*/
@@ -96,7 +131,6 @@ function Gaming(){
     Gaming()
     options[RandomOption].removeEventListener("click",EventL)
    }
-
    options[RandomOption].addEventListener("click", EventL)
 
 
@@ -121,7 +155,7 @@ function WrongAnswers(OpcaoAleatoria, FlagGerada) {
 
 
      do {
-        randomNum = Math.floor(Math.random() * 4);
+        randomNum = RandomOptions();
         if (!Options.includes(randomNum)){
          randomNums.push(randomNum)
          Options.push(randomNum)
@@ -131,7 +165,7 @@ function WrongAnswers(OpcaoAleatoria, FlagGerada) {
 
 
       do{
-        randomFlag = Math.floor(Math.random() * 4);
+        randomFlag = randomNumforFlags();
         if (!Flags.includes(randomFlag)){
             opcionesFlags.push(randomFlag)
             Flags.push(randomFlag)
