@@ -99,35 +99,46 @@ function Gaming(){
 
 
 function WrongAnswers(OpcaoAleatoria, FlagGerada) {
-    let randomWrongFlag;
-    let randomNum;
     let Options = [];
+    let opcionesFlags = [];
     let Flags = [];
+    let randomNums = [];
+
 
     Options.push(OpcaoAleatoria)
     Flags.push(FlagGerada)
 
-    do {
+   
 
 
-      randomNum = Math.floor(Math.random() * 4)
-      if(!Options.includes(randomNum)){
 
      do {
-        randomWrongFlag = Math.floor(Math.random() * 4)
-
-        if(!Flags.includes(randomWrongFlag)){
-
-        options[randomNum].textContent = flaggersstring[randomWrongFlag]
-        Flags.push(randomWrongFlag)
-
+        randomNum = Math.floor(Math.random() * 4);
+        if (!Options.includes(randomNum)){
+         randomNums.push(randomNum)
+         Options.push(randomNum)
         }
-    } while (Flags.length < 4)
+     } while (Options.length < 4)
 
-        Options.push(randomNum)
-      }
-    } while (Options.length < 4);
 
+
+      do{
+        randomFlag = Math.floor(Math.random() * 4);
+        if (!Flags.includes(randomFlag)){
+            opcionesFlags.push(randomFlag)
+            Flags.push(randomFlag)
+        }
+
+      }while(Flags.length < 4)
+
+     
+     
+     
+      for (let i = 0; i < randomNums.length; i++) {
+        let optionIndex = randomNums[i];
+        let flagIndex = opcionesFlags[i];
+        options[optionIndex].textContent = flaggersstring[flagIndex];
+    }
 }
 
 
