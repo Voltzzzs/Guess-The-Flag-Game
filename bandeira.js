@@ -51,7 +51,6 @@ function RandomOptions (){
     return randompt;
 }
 
-let othersOp = []
 
 /*Opc*/
 
@@ -74,12 +73,6 @@ function blackp1() {
      
 }
 
-
-
-
-
-
-
 function Gaming(){
 
     let randomCARALHO = randomNumforFlags()
@@ -93,49 +86,49 @@ function Gaming(){
     
     ArrayforOpt.push(RandomOption)
 
-
-    function WrongAnswers(OpcaoAleatoria) {
-        let randomNum;
-        let Options = [];
-        let Flags = [];
-    
-        Options.push(OpcaoAleatoria)
-    
-        do {
-          randomNum = Math.floor(Math.random() * 4)
-    
-          if(!Options.includes(randomNum)){
-    
-    
-    
-    
-         do {
-    
-            let randomWrongFlag = Math.floor(Math.random() * 4)
-            options[randomNum].textContent = flaggersstring[randomWrongFlag]
-            
-        } while (Flags.length < 3)
-    
-    
-    
-    
-    
-    
-             Flags.push(randomWrongFlag)
-             Options.push(randomNum)
-          }
-    
-        } while (Options.length < 3);
-    
-    }
+   WrongAnswers(RandomOption, randomCARALHO)
 
 
 
 
-    
+
+
 }
       
 
+
+
+function WrongAnswers(OpcaoAleatoria, FlagGerada) {
+    let randomWrongFlag;
+    let randomNum;
+    let Options = [];
+    let Flags = [];
+
+    Options.push(OpcaoAleatoria)
+    Flags.push(FlagGerada)
+
+    do {
+
+
+      randomNum = Math.floor(Math.random() * 4)
+      if(!Options.includes(randomNum)){
+
+     do {
+        randomWrongFlag = Math.floor(Math.random() * 4)
+
+        if(!Flags.includes(randomWrongFlag)){
+
+        options[randomNum].textContent = flaggersstring[randomWrongFlag]
+        Flags.push(randomWrongFlag)
+
+        }
+    } while (Flags.length < 4)
+
+        Options.push(randomNum)
+      }
+    } while (Options.length < 4);
+
+}
 
 
 
