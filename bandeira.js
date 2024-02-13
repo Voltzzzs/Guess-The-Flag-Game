@@ -3,6 +3,8 @@ const normal = document.getElementById("normal")
 const hard = document.getElementById("hard")
 const fp = document.getElementById("inicio")
 const resp = document.getElementsByClassName("rep")
+const pont = document.getElementById("Pontos")
+const Npont = document.getElementById("NAcertos")
 
 /*Flags*/
 
@@ -84,7 +86,6 @@ const options = [op1,op2,op3,op4]
 /**//**//**//**//**//**//**//**//**//**//**//**/
 function blackp1() {
     fp.style.display = "none";
-
     Array.from(resp).forEach((element) => {
         element.style.display = "grid";
     });
@@ -94,9 +95,9 @@ function blackp1() {
 function Gaming(){
 
     function EventL (){
-
         flaggers[randomCARALHO ].style.display = "none"
         options[RandomOption].removeEventListener("click",EventL);
+        Npont.textContent++
         Gaming();
        }
 
@@ -160,5 +161,6 @@ function WrongAnswers(OpcaoAleatoria, FlagGerada) {
 easer.addEventListener("click", function(){
     blackp1()
     Gaming()
+    pont.style.display = "grid";
 })
 
