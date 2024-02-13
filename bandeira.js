@@ -17,7 +17,7 @@ const BR = document.getElementById("Brasil")
 const SRI = document.getElementById("Srilanka")
 const Port = document.getElementById("Portugal")
 const Spain = document.getElementById("Spain")
-const France = document.getElementById("Frence")
+const France = document.getElementById("France")
 const Germany = document.getElementById("Germany")
 const Belgium = document.getElementById("Belgium")
 const Netherlands = document.getElementById("Netherlands")
@@ -28,26 +28,17 @@ const Italy = document.getElementById("Italy")
 /*ImportBandeiras*/
 
 
-
-
 /*Array Bandeiras*/
-const flaggers = [Dinamarca,UK,BR,SRI,Port,Spain,France,Germany,
-    Belgium,Netherlands,Luxemburg,Andorra,Switzerland,Italy
-]
+const flaggers = [Dinamarca,UK,BR,SRI,Port,Spain,France,Germany,Belgium,Netherlands,Luxemburg,Andorra,Switzerland,Italy]
 
-const flaggersstring = ["Dinamarca","UK","Brasil","Sri Lanka","Portugal","Espanha","França",
-"Alemanha","Bélgica","Paises Baixos","Luxemburgo","Andorra","Suiça","Itália"
-]
+const flaggersstring = ["Dinamarca","UK","Brasil","Sri Lanka","Portugal","Espanha","França","Alemanha","Bélgica","Paises Baixos","Luxemburgo","Andorra","Suiça","Itália"]
 /*Array Bandeiras*/
-
-
-
 
 
 /*Random Numbers Flags/Op*/
 
 function randomNumforFlags(){
-    let randomNum = Math.round(Math.random()*12)
+    let randomNum = Math.round(Math.random()*13)
     return randomNum;
 }
 
@@ -58,9 +49,6 @@ function RandomOptions (){
 
 
 /*Random Numbers Flags/Op*/
-
-
-
 
 
 /*Mostar e Ocultar Bandeiras*/
@@ -74,11 +62,7 @@ function HideFlag(element){
 /*Mostrar e Ocultar Bandeiras*/
 
 
-
-
 /*Flags*/
-
-
 
 
 /*Opc*/
@@ -94,14 +78,10 @@ const options = [op1,op2,op3,op4]
 
 
 
+/*Functions*/
 
 
-
-
-
-/**/
-
-/*PaG1*/
+/**//**//**//**//**//**//**//**//**//**//**//**/
 function blackp1() {
     fp.style.display = "none";
 
@@ -110,8 +90,15 @@ function blackp1() {
     });
      
 }
-
+/**//**//**//**//**//**//**//**//**//**//**//**/
 function Gaming(){
+
+    function EventL (){
+
+        flaggers[randomCARALHO ].style.display = "none"
+        options[RandomOption].removeEventListener("click",EventL);
+        Gaming();
+       }
 
     let randomCARALHO = randomNumforFlags()
     let RandomOption = RandomOptions()
@@ -126,33 +113,23 @@ function Gaming(){
 
    WrongAnswers(RandomOption, randomCARALHO)
 
-   function EventL (){
-    flaggers[randomCARALHO ].style.display = "none"
-    Gaming()
-    options[RandomOption].removeEventListener("click",EventL)
-   }
    options[RandomOption].addEventListener("click", EventL)
 
-
+   /*console.log("Show FLag:", flaggersstring[randomCARALHO]) */
 
 }
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+
       
-
-
-
 function WrongAnswers(OpcaoAleatoria, FlagGerada) {
     let Options = [];
     let opcionesFlags = [];
     let Flags = [];
     let randomNums = [];
 
-
     Options.push(OpcaoAleatoria)
     Flags.push(FlagGerada)
-
-   
-
-
 
      do {
         randomNum = RandomOptions();
@@ -162,20 +139,14 @@ function WrongAnswers(OpcaoAleatoria, FlagGerada) {
         }
      } while (Options.length < 4)
 
-
-
       do{
         randomFlag = randomNumforFlags();
         if (!Flags.includes(randomFlag)){
             opcionesFlags.push(randomFlag)
             Flags.push(randomFlag)
         }
-
       }while(Flags.length < 4)
 
-     
-     
-     
       for (let i = 0; i < randomNums.length; i++) {
         let optionIndex = randomNums[i];
         let flagIndex = opcionesFlags[i];
@@ -183,31 +154,11 @@ function WrongAnswers(OpcaoAleatoria, FlagGerada) {
     }
 }
 
-
-
-
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
 
 easer.addEventListener("click", function(){
     blackp1()
     Gaming()
 })
-/*PaG1*/
-
-
-
-
-
-
-/*Easy*/
-
-
-
-
-
-
-
-
-/*Easy*/
-
 
