@@ -5,7 +5,7 @@ const fp = document.getElementById("inicio")
 const resp = document.getElementsByClassName("rep")
 const pont = document.getElementById("Pontos")
 const Npont = document.getElementById("NAcertos")
-
+const audio = document.getElementById("myAudio")
 /*Flags*/
 
 
@@ -83,6 +83,10 @@ const options = [op1,op2,op3,op4]
 /*Functions*/
 
 
+
+
+
+
 /**//**//**//**//**//**//**//**//**//**//**//**/
 function blackp1() {
     fp.style.display = "none";
@@ -94,11 +98,22 @@ function blackp1() {
 /**//**//**//**//**//**//**//**//**//**//**//**/
 function Gaming(){
 
+    function pisca (){
+        pont.classList.add("transition")
+
+        setTimeout(function() {
+            pont.classList.remove('transition');
+            
+        }, 700);
+    }
+
     function EventL (){
         flaggers[randomCARALHO ].style.display = "none"
         options[RandomOption].removeEventListener("click",EventL);
         Npont.textContent++
+        audio.play();
         Gaming();
+        pisca()
        }
 
     let randomCARALHO = randomNumforFlags()
@@ -163,4 +178,7 @@ easer.addEventListener("click", function(){
     Gaming()
     pont.style.display = "grid";
 })
+
+/*No ReP*/
+let AlreadyAppeard = [];
 
