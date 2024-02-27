@@ -1,184 +1,189 @@
-const easer = document.getElementById("ease")
-const normal = document.getElementById("normal")
-const hard = document.getElementById("hard")
-const fp = document.getElementById("inicio")
-const resp = document.getElementsByClassName("rep")
-const pont = document.getElementById("Pontos")
-const Npont = document.getElementById("NAcertos")
-const audio = document.getElementById("myAudio")
+const easer = document.querySelector("#ease");
+const normal = document.querySelector("#normal");
+const hard = document.querySelector("#hard");
+const fp = document.querySelector("#inicio");
+const resp = document.querySelectorAll(".rep");
+const pont = document.querySelector("#Pontos");
+const Npont = document.querySelector("#NAcertos");
+const audio = document.querySelector("#myAudio");
+
 /*Flags*/
 
-
-
-
-
 /*ImportBandeiras*/
-const Dinamarca = document.getElementById("Dinamarca")
-const UK = document.getElementById("ReinoU")
-const BR = document.getElementById("Brasil")
-const SRI = document.getElementById("Srilanka")
-const Port = document.getElementById("Portugal")
-const Spain = document.getElementById("Spain")
-const France = document.getElementById("France")
-const Germany = document.getElementById("Germany")
-const Belgium = document.getElementById("Belgium")
-const Netherlands = document.getElementById("Netherlands")
-const Luxemburg = document.getElementById("Luxemburg")
-const Andorra = document.getElementById("Andorra")
-const Switzerland = document.getElementById("Switzerland")
-const Italy = document.getElementById("Italy")
+const Dinamarca = document.querySelector("#Dinamarca");
+const UK = document.querySelector("#ReinoU");
+const BR = document.querySelector("#Brasil");
+const SRI = document.querySelector("#Srilanka");
+const Port = document.querySelector("#Portugal");
+const Spain = document.querySelector("#Spain");
+const France = document.querySelector("#France");
+const Germany = document.querySelector("#Germany");
+const Belgium = document.querySelector("#Belgium");
+const Netherlands = document.querySelector("#Netherlands");
+const Luxemburg = document.querySelector("#Luxemburg");
+const Andorra = document.querySelector("#Andorra");
+const Switzerland = document.querySelector("#Switzerland");
+const Italy = document.querySelector("#Italy");
 /*ImportBandeiras*/
 
-
 /*Array Bandeiras*/
-const flaggers = [Dinamarca,UK,BR,SRI,Port,Spain,France,Germany,Belgium,Netherlands,Luxemburg,Andorra,Switzerland,Italy]
+let flaggers = [
+  Dinamarca,
+  UK,
+  BR,
+  SRI,
+  Port,
+  Spain,
+  France,
+  Germany,
+  Belgium,
+  Netherlands,
+  Luxemburg,
+  Andorra,
+  Switzerland,
+  Italy,
+];
 
-const flaggersstring = ["Dinamarca","UK","Brasil","Sri Lanka","Portugal","Espanha","França","Alemanha","Bélgica","Paises Baixos","Luxemburgo","Andorra","Suiça","Itália"]
+let flaggersstring = [
+  "Dinamarca",
+  "UK",
+  "Brasil",
+  "Sri Lanka",
+  "Portugal",
+  "Espanha",
+  "França",
+  "Alemanha",
+  "Bélgica",
+  "Paises Baixos",
+  "Luxemburgo",
+  "Andorra",
+  "Suiça",
+  "Itália",
+];
 /*Array Bandeiras*/
+
 
 
 /*Random Numbers Flags/Op*/
 
-function randomNumforFlags(){
-    let randomNum = Math.round(Math.random()*13)
-    return randomNum;
-}
-
-function RandomOptions (){
-    let randompt = Math.round(Math.random()*3)
-    return randompt;
-}
-
-
-/*Random Numbers Flags/Op*/
-
-
-/*Mostar e Ocultar Bandeiras*/
-function ShowFlag(element){
-   flaggers[element].style.display = "flex"
-}
-
-function HideFlag(element){
-    flaggers[element].style.display = "none"
-}
-/*Mostrar e Ocultar Bandeiras*/
 
 
 /*Flags*/
 
+/*Opc*/
+const op1 = document.getElementById("op1");
+const op2 = document.getElementById("op2");
+const op3 = document.getElementById("op3");
+const op4 = document.getElementById("op4");
+const options = [op1, op2, op3, op4];
 
 /*Opc*/
-const op1 = document.getElementById("op1")
-const op2 = document.getElementById("op2")
-const op3 = document.getElementById("op3")
-const op4 = document.getElementById("op4")
-const options = [op1,op2,op3,op4]
-
-
-
-/*Opc*/
-
-
 
 /*Functions*/
 
-
-
-
-
-
-/**//**//**//**//**//**//**//**//**//**//**//**/
+/**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/
 function blackp1() {
-    fp.style.display = "none";
-    Array.from(resp).forEach((element) => {
-        element.style.display = "grid";
-    });
-     
+  fp.style.display = "none";
+  resp.forEach((element) => {
+    element.style.display = "grid";
+  });
 }
-/**//**//**//**//**//**//**//**//**//**//**//**/
-function Gaming(){
 
-    function pisca (){
-        pont.classList.add("transition")
+/**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/
 
-        setTimeout(function() {
-            pont.classList.remove('transition');
-            
-        }, 700);
-    }
+resp.forEach((element) => {
+  element.addEventListener("click", (event) => {
+    Repetiton.push(event.target.id);
+  });
+});
 
-    function EventL (){
-        flaggers[randomCARALHO ].style.display = "none"
-        options[RandomOption].removeEventListener("click",EventL);
-        Npont.textContent++
-        audio.play();
-        Gaming();
-        pisca()
-       }
+function Gaming() {
 
-    let randomCARALHO = randomNumforFlags()
-    let RandomOption = RandomOptions()
-    let ArrayforFlags = []
-    let ArrayforOpt = []
+  let randomR = randomNumforFlags();
+  let randomO = RandomOptions();
 
-    ShowFlag(randomCARALHO)
+  flaggers[randomR].style.display = "flex";
 
-    options[RandomOption].textContent = flaggersstring[randomCARALHO]
-    
-    ArrayforOpt.push(RandomOption)
+  options[randomO].textContent = flaggersstring[randomR];
 
-   WrongAnswers(RandomOption, randomCARALHO)
+  options[randomO].addEventListener("click", CorrectOne);
 
-   options[RandomOption].addEventListener("click", EventL)
+  WrongAnswers(randomO, randomR);
 
-   /*console.log("Show FLag:", flaggersstring[randomCARALHO]) */
-
+  function CorrectOne() {
+    Npont.textContent++;
+    audio.play();
+    pisca();
+    Gaming();
+    options[randomO].removeEventListener("click", CorrectOne)
+    console.log(flaggers[randomR])
+    console.log(flaggersstring[randomR])
+    console.log(randomR)
+    flaggers[randomR].style.display = "none";
+  flaggers.splice(randomR, 1);
+  flaggersstring.splice(randomR, 1);
+  }
+  
 }
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
+/**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/
 
-      
 function WrongAnswers(OpcaoAleatoria, FlagGerada) {
-    let Options = [];
-    let opcionesFlags = [];
-    let Flags = [];
-    let randomNums = [];
+  let Options = [];
+  let opcionesFlags = [];
+  let Flags = [];
+  let randomNums = [];
 
-    Options.push(OpcaoAleatoria)
-    Flags.push(FlagGerada)
+  Options.push(OpcaoAleatoria);
+  Flags.push(FlagGerada);
 
-     do {
-        randomNum = RandomOptions();
-        if (!Options.includes(randomNum)){
-         randomNums.push(randomNum)
-         Options.push(randomNum)
-        }
-     } while (Options.length < 4)
-
-      do{
-        randomFlag = randomNumforFlags();
-        if (!Flags.includes(randomFlag)){
-            opcionesFlags.push(randomFlag)
-            Flags.push(randomFlag)
-        }
-      }while(Flags.length < 4)
-
-      for (let i = 0; i < randomNums.length; i++) {
-        let optionIndex = randomNums[i];
-        let flagIndex = opcionesFlags[i];
-        options[optionIndex].textContent = flaggersstring[flagIndex];
+  do {
+    randomNum = RandomOptions();
+    if (!Options.includes(randomNum)) {
+      randomNums.push(randomNum);
+      Options.push(randomNum);
     }
+  } while (Options.length < 4);
+
+  do {
+    randomFlag = randomNumforFlags();
+    if (!Flags.includes(randomFlag)) {
+      opcionesFlags.push(randomFlag);
+      Flags.push(randomFlag);
+    }
+  } while (Flags.length < 4);
+
+  for (let i = 0; i < randomNums.length; i++) {
+    let optionIndex = randomNums[i];
+    let flagIndex = opcionesFlags[i];
+    options[optionIndex].textContent = flaggersstring[flagIndex];
+  }
 }
 
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/ /**/
 
-
-easer.addEventListener("click", function(){
-    blackp1()
-    Gaming()
-    pont.style.display = "grid";
-})
+easer.addEventListener("click", function () {
+  Gaming();
+  blackp1();
+  pont.style.display = "grid";
+});
 
 /*No ReP*/
-let AlreadyAppeard = [];
+function randomNumforFlags() {
+  let randomNum = Math.round(Math.random() * flaggers.length);
+  return randomNum;
+}
 
+function RandomOptions() {
+  let randompt = Math.round(Math.random() * 3);
+  return randompt;
+}
+/*Random Numbers Flags/Op*/
+
+function pisca() {
+  pont.classList.add("transition");
+
+  setTimeout(function () {
+    pont.classList.remove("transition");
+  }, 700);
+}
